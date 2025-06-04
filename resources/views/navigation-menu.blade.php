@@ -9,7 +9,7 @@
                         <x-application-mark class="block h-9 w-auto" />
                     </a>
                 </div>
-
+                @hasrole('USUARIO')
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
@@ -19,16 +19,44 @@
                         {{ __('Datos Generales') }}
                     </x-nav-link>
                 </div>
+                @endhasrole
             </div>
+                @hasrole('ADMINISTRADOR')
+                <div class="flex items-center ms-6">
+                    <x-dropdown align="right" width="48">
+                        <x-slot name="trigger">
+                            <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-700 bg-white hover:text-gray-900 focus:outline-none focus:bg-gray-50 transition ease-in-out duration-150">
+                                {{ __('Administracion') }}
+                            </button>
+                        </x-slot>
+
+                        <x-slot name="content">
+                            <!-- Enlaces para administración -->
+                            <x-dropdown-link href="{{ route('usuarios') }}">
+                                {{ __('Gestionar Usuarios') }}
+                            </x-dropdown-link>
+                            <x-dropdown-link href="{{ route('progreso-usuario') }}">
+                                {{ __('Progreso Por Usuario') }}
+                            </x-dropdown-link>
+                            {{-- 
+                            <x-dropdown-link href="{{ route('admin.logs') }}">
+                                {{ __('Logs del Sistema') }}
+                            </x-dropdown-link> --}}
+                        </x-slot>
+                    </x-dropdown>
+                </div>
+                @endhasrole
 
             <div class="hidden sm:flex sm:items-center sm:ms-6">
                 
+                @hasrole('USUARIO')
                     <x-nav-link href="{{ route('calculadora') }}" :active="request()->routeIs('calculadora')">
                         {{ __('Calculadora') }}
                     </x-nav-link>
                     <x-nav-link href="{{ route('progreso') }}" :active="request()->routeIs('progreso')">
                         {{ __('Mi progreso') }}
                     </x-nav-link>
+                @endhasrole
 
                 <!-- Teams Dropdown -->
                 @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
