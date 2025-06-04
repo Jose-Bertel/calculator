@@ -38,10 +38,9 @@
                             <x-dropdown-link href="{{ route('progreso-usuario') }}">
                                 {{ __('Progreso Por Usuario') }}
                             </x-dropdown-link>
-                            {{-- 
-                            <x-dropdown-link href="{{ route('admin.logs') }}">
+                            <x-dropdown-link href="{{ route('activity-log') }}">
                                 {{ __('Logs del Sistema') }}
-                            </x-dropdown-link> --}}
+                            </x-dropdown-link>
                         </x-slot>
                     </x-dropdown>
                 </div>

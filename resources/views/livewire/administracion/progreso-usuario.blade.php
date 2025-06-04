@@ -49,7 +49,7 @@
                                 <button wire:click="abrirModalEliminar({{ $registro->id }})" class="btn btn-xs btn-error">Eliminar</button>
                             </li>
                             <li class="my-1">
-                                <button wire:click="abrirmodalactualizar()"({{ $registro->id }})" class="btn btn-xs btn-info">Actualizar</button>
+                                <button wire:click="abrirModalActualizar({{ $registro->id }})" class="btn btn-xs btn-info">Actualizar</button>
                             </li>
                         </ul>
                         </details>
@@ -97,5 +97,22 @@
         </div>
         </div>
     </div>
+
+    {{-- MODAL ACTUALIZAR DATOS --}}
+  <input type="checkbox" id="modal-cambio-nombre" class="modal-toggle" wire:model="modalActualizarDatos" />
+  <div class="modal">
+    <div class="modal-box max-w-md">
+      <h3 class="font-bold text-lg mb-4">Nuevo Peso</h3>
+      <input type="text" wire:model.defer="newPeso" class="input input-bordered w-full mb-4" />
+      @error('newPeso') <p class="text-error text-sm mt-1">{{ $message }}</p> @enderror
+      <h3 class="font-bold text-lg mb-4">Nueva Altura</h3>
+      <input type="text" wire:model.defer="newAltura" class="input input-bordered w-full mb-4" />
+      @error('newAltura') <p class="text-error text-sm mt-1">{{ $message }}</p> @enderror
+      <div class="modal-action">
+        <button wire:click="actualizar()" class="btn btn-primary">Guardar</button>
+        <button wire:click="cerrarModalActualizar" class="btn btn-secondary">Cancelar</button>
+      </div>
+    </div>
+  </div>
 </div>
 

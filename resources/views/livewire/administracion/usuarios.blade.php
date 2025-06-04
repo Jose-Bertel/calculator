@@ -126,7 +126,7 @@
                         <summary class="menu btn btn-ghost btn-xs">...</summary>
                         <ul class="flex flex-col justify-center align-middle">
                             <li class="my-1">
-                                <button wire:click="abrirModalEliminar({{ $usuario->id }})" class="btn btn-xs btn-error">Eliminar</button>
+                                <button wire:click="confirmarEliminacion({{ $usuario->id }})" class="btn btn-xs btn-error">Eliminar</button>
                             </li>
                             <li class="my-1">
                                 <button wire:click="abrirModalAsignarRol({{ $usuario->id }})" class="btn btn-xs btn-info">Asignar rol</button>

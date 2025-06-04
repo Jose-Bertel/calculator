@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\ActivityLogTable;
 use App\Livewire\Administracion\ProgresoUsuario;
 use App\Livewire\Administracion\Usuarios;
 use App\Livewire\CalculadoraImc;
@@ -26,6 +27,7 @@ Route::middleware(['auth'])->group(function () {
     Route::middleware(['role:ADMINISTRADOR'])->group(function () {
     Route::get('/usuarios', Usuarios::class)->name('usuarios');
     Route::get('/progreso-usuario', ProgresoUsuario::class)->name('progreso-usuario');
+    Route::get('/admin/activity-log', ActivityLogTable::class)->name('activity-log');
     });
     // Rutas para Usuairos
     Route::middleware(['role:USUARIO'])->group(function () {

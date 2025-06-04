@@ -19,7 +19,12 @@ class ProgresoUsuario extends Component
     public $search;
     public $userId = 0;
     public $user;
-    
+    public $registroId;
+
+    public bool $modalActualizarDatos = false;
+    public $newPeso;
+    public $newAltura;
+    public $newImc;
     public bool $mostrarModalEliminar = false;
     public $registroAEliminar = null;
 
@@ -42,7 +47,7 @@ class ProgresoUsuario extends Component
             $this->mount();
         }
     }
-        public function abrirModalEliminar(int $userId): void
+    public function abrirModalEliminar(int $userId): void
     {
         $this->registroAEliminar = RegistroImcService::getById($userId);
         $this->mostrarModalEliminar = true;
@@ -59,5 +64,32 @@ class ProgresoUsuario extends Component
     public function cerrarMostrarModalEliminar(){
         $this->registroAEliminar = null;
         $this->mostrarModalEliminar = false;
+    }
+    public function abrirModalActualizar($id)
+    {
+        $registro = RegistroImcService::getById($id);
+        $this->registroId = $registro->id; 
+        $this->newAltura = $registro->estatura;
+        $this->newPeso = $registro->peso;
+        $this->modalActualizarDatos = true;
+    }
+    public function actualizar(): void
+    {
+        $this->validate([
+            'newPeso' => 'required|numeric|min:1',
+            'newAltura' => 'required|numeric|min:0.1',
+        ]);
+        $this->newImc = round($this->newPeso / (($this->newAltura/100) ** 2),2);
+        RegistroImcService::actualizarRegistroImc(
+                    $this->registroId,
+                    $this->newPeso,
+                    $this->newAltura,
+                    $this->newImc
+        );
+        $this->modalActualizarDatos = false;
+        $this->mount();
+    }
+    public function cerrarModalActualizar(){
+        $this->modalActualizarDatos = false;
     }
 }

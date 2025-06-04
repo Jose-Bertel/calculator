@@ -175,5 +175,14 @@ public static function crearRegistro(int $userId, float $peso, float $estatura, 
     {
         $user->delete();
     }
-
+    public static function actualizarRegistroImc($id, $peso, $estatura,$imc)
+    {
+        $registro = RegistroImc::findOrFail($id);
+        if ($registro) {
+                $registro->peso = $peso;
+                $registro->estatura = $estatura;
+                $registro->imc = $imc;
+                $registro->save();
+        }
+    }
 }
