@@ -29,6 +29,7 @@
                     <x-nav-link href="{{ route('progreso') }}" :active="request()->routeIs('progreso')">
                         {{ __('Mi progreso') }}
                     </x-nav-link>
+
                 <!-- Teams Dropdown -->
                 @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
                     <div class="ms-3 relative">
