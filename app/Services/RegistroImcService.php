@@ -50,6 +50,12 @@ public static function crearRegistro(int $userId, float $peso, float $estatura, 
                           ->orderBy('created_at', 'desc')
                           ->get();
     }
+    public static function listarPorUsuarioPaginado(int $userId, int $porPagina = 7)
+    {
+        return RegistroImc::where('user_id', $userId)
+                        ->orderBy('created_at', 'desc')
+                        ->paginate($porPagina);
+    }
     public static function promedioImcPorUsuario(int $userId): ?float
     {
         return RegistroImc::where('user_id', $userId)

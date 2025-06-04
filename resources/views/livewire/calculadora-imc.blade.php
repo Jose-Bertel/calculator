@@ -37,6 +37,6 @@
     </div>
 
     <button wire:click="guardar()" class="btn btn-primary w-full">
-        Guardar IMC
+        Calcular IMC
     </button>
 </div>
