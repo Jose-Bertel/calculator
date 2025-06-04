@@ -6,7 +6,7 @@
                 <th>Modelo</th>
                 <th>Administrador</th>
                 <th>Descripción</th>
-                <th>Cambios</th>
+                <th>Detalles</th>
             </tr>
         </thead>
         <tbody>
@@ -17,16 +17,39 @@
                     <td class="w-32 ">{{ optional($log->causer)->name ?? '-' }}</td>
                     <td class="w-32 ">{{ $log->description }}</td>
                     <td>
-                        @if ($log->event === 'updated')
-                            <div class="text-sm">
-                                <div><strong>Antes:</strong></div>
-                                <pre class="bg-blue-200 p-2 rounded mb-2 overflow-x-auto">{{ json_encode($log->properties['old'] ?? [], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE) }}</pre>
-                                <div><strong>Después:</strong></div>
-                                <pre class="bg-blue-200 p-2 rounded overflow-x-auto">{{ json_encode($log->properties['attributes'] ?? [], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE) }}</pre>
-                            </div>
-                        @else
-                            <span class="text-gray-500">Sin cambios</span>
-                        @endif
+                        <div class="text-sm">
+                            @if ($log->event === 'updated')
+                                @if (isset($log->properties['old']))
+                                    <div><strong>Antes:</strong></div>
+                                    <pre class="bg-blue-200 p-2 rounded mb-2 overflow-x-auto">
+                    {{ json_encode($log->properties['old'], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE) }}</pre>
+                                @endif
+                                @if (isset($log->properties['attributes']))
+                                    <div><strong>Después:</strong></div>
+                                    <pre class="bg-blue-200 p-2 rounded overflow-x-auto">
+                    {{ json_encode($log->properties['attributes'], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE) }}</pre>
+                                @endif
+
+                            @elseif ($log->event === 'created')
+                                @if (isset($log->properties['attributes']))
+                                    <div><strong>Datos creados:</strong></div>
+                                    <pre class="bg-blue-200 p-2 rounded overflow-x-auto">
+                    {{ json_encode($log->properties['attributes'], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE) }}</pre>
+                                @endif
+
+                            @elseif ($log->event === 'deleted')
+                                @if (isset($log->properties['old']))
+                                    <div><strong>Registro eliminado:</strong></div>
+                                    <pre class="bg-blue-200 p-2 rounded overflow-x-auto">
+                    {{ json_encode($log->properties['old'], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE) }}</pre>
+                                @else
+                                    <span class="text-gray-500">Sin datos disponibles</span>
+                                @endif
+
+                            @else
+                                <span class="text-gray-500">Sin detalles</span>
+                            @endif
+                        </div>
                     </td>
                 </tr>
             @endforeach
