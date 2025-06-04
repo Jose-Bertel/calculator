@@ -5,7 +5,7 @@
         use Carbon\Carbon;
 
         // Para la gráfica (orden ascendente por fecha)
-        $registrosOrdenadosAsc = collect($registros)->sortBy('created_at')->values()->toArray();
+        $registrosOrdenadosAsc = collect($registros2)->sortBy('created_at')->values()->toArray();
 
         $labels = array_map(fn($r) => Carbon::parse($r['created_at'])->format('d/m/Y'), $registrosOrdenadosAsc);
         $datos = array_map(fn($r) => $r['imc'], $registrosOrdenadosAsc);
@@ -24,7 +24,7 @@
         </tr>
     </thead>
     <tbody>
-    @forelse (collect($registros)->sortByDesc('created_at') as $registro)
+    @forelse ($registros as $registro)
         @php
             $imc = $registro['imc'];
             if ($imc < 18.5) {
@@ -46,11 +46,16 @@
         </tr>
         @empty
                 <tr>
-                    <td colspan="4">No se encontraron usuarios.</td>
+                    <td colspan="4">No se encontraron registros aun.</td>
                 </tr>
     @endforelse
     </tbody>
 </table>
+
+<div class="mt-4">
+    {{ $registros->links() }}
+</div>
+
 
     @if ($promedioIMC !== null)
         <div class="max-w-4xl mx-auto mt-6 p-4 mb-6 bg-blue-100 rounded text-blue-800 font-semibold">
