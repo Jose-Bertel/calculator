@@ -1,6 +1,7 @@
 <?php
 
 use App\Livewire\CalculadoraImc;
+use App\Livewire\DatosGenerales;
 use App\Livewire\MiProgreso;
 use Illuminate\Support\Facades\Route;
 
@@ -21,6 +22,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/calculadora', CalculadoraImc::class)->name('calculadora');
     Route::get('/progreso', MiProgreso::class)->name('progreso');
+    Route::get('/datos', DatosGenerales::class)->name('datos');
     // Rutas para Administradores
     Route::middleware(['role:ADMINISTRADOR'])->group(function () {
     });
