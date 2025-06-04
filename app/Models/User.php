@@ -67,4 +67,8 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+    public function registrosImc()
+    {
+        return $this->hasMany(RegistroImc::class);
+    }
 }
