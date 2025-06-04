@@ -29,13 +29,7 @@
                     <x-nav-link href="{{ route('progreso') }}" :active="request()->routeIs('progreso')">
                         {{ __('Mi progreso') }}
                     </x-nav-link>
-                
-                    <x-nav-link href="{{ route('calculadora') }}" :active="request()->routeIs('calculadora')">
-                        {{ __('Calculadora') }}
-                    </x-nav-link>
-                    <x-nav-link href="{{ route('progreso') }}" :active="request()->routeIs('progreso')">
-                        {{ __('Mi progreso') }}
-                    </x-nav-link>
+
                 <!-- Teams Dropdown -->
                 @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
                     <div class="ms-3 relative">
@@ -112,7 +106,6 @@
                         <x-slot name="content">
                             <!-- Account Management -->
                             <div class="block px-4 py-2 text-xs text-gray-400">
-                                {{ Auth::user()->name }}
                                 {{ Auth::user()->name }}
                             </div>
 
