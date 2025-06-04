@@ -23,7 +23,8 @@
         <header>
               <!-- Navbar -->
             <div class="navbar bg-base-100 border-b shadow-sm px-6">
-                                <div class="flex-1 text-xl font-semibold">IMC</div>
+              <a href="{{route('welcome')}}"><x-application-mark class="block h-9 w-auto mr-2"/></a>
+                                <a href="{{ route('welcome') }}" class="flex-1 text-xl font-semibold">IMC</a>
                 <div class="flex-none space-x-2">
 @if (Route::has('login'))
                 <nav class="flex items-center justify-end gap-4">
