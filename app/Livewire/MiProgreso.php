@@ -11,21 +11,25 @@ class MiProgreso extends Component
 {
     use WithPagination;
     
-    public $registros = [];
+    public $porPagina = 7; // Puedes cambiar este número
     public $promedioIMC;
     public $conteoRangos;
+    public $registros2 = [];
 
     public function mount()
     {
         $userId = Auth::id();
 
-        $this->registros = RegistroImcService::listarPorUsuario($userId)->sortBy('created_at')->values()->toArray();
+        $this->registros2 = RegistroImcService::listarPorUsuario($userId)->sortBy('created_at')->values()->toArray();
         $this->promedioIMC = RegistroImcService::promedioImcPorUsuario($userId);
         $this->conteoRangos = RegistroImcService::conteoPorRangoImc($userId);
     }
-
     public function render()
     {
-        return view('livewire.mi-progreso');
+        $userId = Auth::id();
+
+        return view('livewire.mi-progreso', [
+            'registros' => RegistroImcService::listarPorUsuarioPaginado($userId, $this->porPagina),
+        ]);
     }
 }
