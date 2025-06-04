@@ -15,10 +15,20 @@
                     <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Inicio') }}
                     </x-nav-link>
+                    <x-nav-link href="{{ route('datos') }}" :active="request()->routeIs('datos')">
+                        {{ __('Datos Generales') }}
+                    </x-nav-link>
                 </div>
             </div>
 
             <div class="hidden sm:flex sm:items-center sm:ms-6">
+                
+                    <x-nav-link href="{{ route('calculadora') }}" :active="request()->routeIs('calculadora')">
+                        {{ __('Calculadora') }}
+                    </x-nav-link>
+                    <x-nav-link href="{{ route('progreso') }}" :active="request()->routeIs('progreso')">
+                        {{ __('Mi progreso') }}
+                    </x-nav-link>
                 
                     <x-nav-link href="{{ route('calculadora') }}" :active="request()->routeIs('calculadora')">
                         {{ __('Calculadora') }}
@@ -102,6 +112,7 @@
                         <x-slot name="content">
                             <!-- Account Management -->
                             <div class="block px-4 py-2 text-xs text-gray-400">
+                                {{ Auth::user()->name }}
                                 {{ Auth::user()->name }}
                             </div>
 
