@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            Bienvenido <span class="text-green-600">{{ auth()->user()->name }}</span>
+            Bienvenid@ - <span class="text-green-600">{{ auth()->user()->name }}</span>
         </h2>
     </x-slot>
 

@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Models\RegistroImc;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class RegistroImcService
 {
@@ -104,5 +105,68 @@ public static function crearRegistro(int $userId, float $peso, float $estatura, 
 
         return $conteo;
     }
+
+public static function listarConEdad()
+{
+    // Subconsulta para obtener el último registro por usuario
+    $subquery = DB::table('registro_imcs')
+        ->select('user_id', DB::raw('MAX(created_at) as ultimo_registro'))
+        ->groupBy('user_id');
+
+    // Join con la subconsulta para obtener sólo el último registro por usuario
+    return DB::table('registro_imcs')
+        ->joinSub($subquery, 'ultimos', function ($join) {
+            $join->on('registro_imcs.user_id', '=', 'ultimos.user_id')
+                 ->on('registro_imcs.created_at', '=', 'ultimos.ultimo_registro');
+        })
+        ->join('users', 'registro_imcs.user_id', '=', 'users.id')
+        ->select(
+            'registro_imcs.user_id',
+            'registro_imcs.imc',
+            DB::raw('TIMESTAMPDIFF(YEAR, users.birthdate, registro_imcs.created_at) as edad')
+        )
+        ->orderBy('edad', 'asc')
+        ->get();
+}
+
+public static function promedioGeneralImc()
+{
+    // Tomar el promedio solo de los últimos registros por usuario (no todos)
+    $subquery = DB::table('registro_imcs')
+        ->select('user_id', DB::raw('MAX(created_at) as ultimo_registro'))
+        ->groupBy('user_id');
+
+    return DB::table('registro_imcs')
+        ->joinSub($subquery, 'ultimos', function ($join) {
+            $join->on('registro_imcs.user_id', '=', 'ultimos.user_id')
+                 ->on('registro_imcs.created_at', '=', 'ultimos.ultimo_registro');
+        })
+        ->avg('registro_imcs.imc');
+}
+public static function promedioImcPorRangoEdad()
+{
+    return DB::table('registro_imcs')
+        ->selectRaw("
+            CASE
+                WHEN edad BETWEEN 0 AND 10 THEN '0-10'
+                WHEN edad BETWEEN 11 AND 18 THEN '11-18'
+                WHEN edad BETWEEN 19 AND 30 THEN '19-25'
+                WHEN edad BETWEEN 19 AND 30 THEN '26-35'
+                WHEN edad BETWEEN 31 AND 50 THEN '36-48'
+                WHEN edad BETWEEN 51 AND 65 THEN '49-65'
+                ELSE '66+'
+            END AS rango_edad,
+            AVG(imc) AS promedio_imc
+        ")
+        ->fromSub(function ($query) {
+            $query->from('registro_imcs')
+                ->join('users', 'registro_imcs.user_id', '=', 'users.id')
+                ->selectRaw('registro_imcs.imc, TIMESTAMPDIFF(YEAR, users.birthdate, registro_imcs.created_at) as edad');
+        }, 'subquery')
+        ->groupBy('rango_edad')
+        ->orderByRaw("FIELD(rango_edad, '0-10', '11-18', '19-25', '26-35', '36-48','49-65', '66+')")
+        ->get();
+}
+
 
 }
