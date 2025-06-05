@@ -51,7 +51,7 @@
                 <x-input-error for="photo" class="mt-2" />
             </div>
         @endif
-
+        @hasrole('ADMINISTRADOR')
         <!-- Name -->
         <div class="col-span-6 sm:col-span-4">
             <x-label for="name" value="{{ __('Name') }}" />
@@ -81,8 +81,8 @@
                 @endif
             @endif
         </div>
+    @endhasrole
     </x-slot>
-
     <x-slot name="actions">
         <x-action-message class="me-3" on="saved">
             {{ __('Saved.') }}

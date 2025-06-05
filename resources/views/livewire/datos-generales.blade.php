@@ -1,5 +1,5 @@
 <div class="max-w-4xl mx-auto p-6 bg-white shadow-xl rounded-xl">
-    <h2 class="text-2xl font-bold mb-6 text-center text-primary">Datos Generales de IMC</h2>
+    <h2 class="text-2xl font-bold mb-6 text-center text-green-700">Datos Generales de IMC</h2>
 
 @if ($promediosPorRangoEdad)
 <div class="max-w-4xl mx-auto mt-6 p-6 bg-white shadow rounded-lg">
@@ -43,8 +43,9 @@
             data: {
                 datasets: [{
                     label: 'Edad vs IMC',
-                    data: dataPoints,
-                    backgroundColor: 'rgba(59,130,246,0.7)',
+                    data: dataPoints,                    
+                    borderColor: 'rgb(0, 155, 0)',
+                    backgroundColor: 'rgb(151, 255, 128,0.8)',
                     pointRadius: 5,
                     pointHoverRadius: 7,
                 }]
@@ -76,7 +77,7 @@
                                 size: 14,
                                 weight: 'bold',
                             },
-                            color: '#3b82f6',
+                            color: 'rgb(0, 155, 0)',
                         }
                     },
                     title: {
