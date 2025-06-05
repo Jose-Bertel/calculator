@@ -1,5 +1,5 @@
 <div class="max-w-4xl my-2 mx-auto p-6 bg-white shadow-xl rounded-xl">
-    <h2 class="text-2xl font-bold mb-6 text-center text-primary">Mi Progreso de IMC (Por Semana)</h2>
+    <h2 class="text-2xl font-bold mb-6 text-center text-green-700">Mi Progreso de IMC<br>(Por Semana)</h2>
 
     @php
         use Carbon\Carbon;
@@ -58,7 +58,7 @@
 
 
     @if ($promedioIMC !== null)
-        <div class="max-w-4xl mx-auto mt-6 p-4 mb-6 bg-blue-100 rounded text-blue-800 font-semibold">
+        <div class="max-w-4xl mx-auto mt-6 p-4 mb-6 bg-blue-100 rounded text-green-800 font-semibold">
             Promedio de IMC: <span class="text-lg">{{ number_format($promedioIMC, 2) }}</span>
         </div>
 
@@ -91,8 +91,8 @@
                 datasets: [{
                     label: 'IMC',
                     data: data,
-                    borderColor: 'rgb(59,130,246)',
-                    backgroundColor: 'rgba(59,130,246,0.2)',
+                    borderColor: 'rgb(0, 155, 0)',
+                    backgroundColor: 'rgb(151, 255, 128,0.2)',
                     tension: 0.3,
                     fill: true,
                     pointRadius: 4,

@@ -19,14 +19,14 @@
             </style>
         @endif
     </head>
-<body class="bg-gray-50">
+<body class="bg-gray-200 pb-5">
         <header>
               <!-- Navbar -->
             <div class="navbar bg-base-100 border-b shadow-sm px-6">
               <a href="{{route('welcome')}}"><x-application-mark class="block h-9 w-auto mr-2"/></a>
-                                <a href="{{ route('welcome') }}" class="flex-1 text-xl font-semibold">IMC</a>
+                                <a href="{{ route('welcome') }}" class="flex-1 text-xl font-semibold"><span class=" text-green-700">(IMC)</span> <span class="font-semibold text-green-700">I</span>ndice de <span class="font-semibold text-green-700">M</span>asa <span class="font-semibold text-green-700">C</span>orporal</a>
                 <div class="flex-none space-x-2">
-@if (Route::has('login'))
+                @if (Route::has('login'))
                 <nav class="flex items-center justify-end gap-4">
                     @auth
                         <a
@@ -57,11 +57,11 @@
                 </div>
             </div>
         </header>
-        
+        <div class="bg-white rounded-3xl mx-20 my-5">
 <section class="flex justify-center gap-10 p-8 items-center">
     <div>
-      <h1 class="text-4xl font-bold text-gray-800">Calcula tu IMC<br><span class="text-gray-700">en segundos</span></h1>
-      <p class="mt-3 text-sm text-gray-600">Descubre si estás en tu peso ideal con una herramienta rápida y precisa</p>
+      <h1 class="text-8xl font-bold text-gray-800">Calcula tu <span class="text-green-700">IMC</span><br><span class="text-7xl text-gray-700">en segundos</span></h1>
+      <p class="mt-3 text-xl text-gray-600">Descubre si estás en tu peso ideal con una herramienta rápida y precisa</p>
     </div>
     <div class="flex justify-center">
       <img src="/storage/images/Imagen1.png" alt="IMC" class="">
@@ -79,7 +79,7 @@
         <label class="label">Peso</label>
         <input id="weight" type="number" placeholder="Peso" class="input input-bordered" />
       </div>
-      <button id="calculate-btn"  class="btn btn-primary w-full">CALCULAR</button>
+      <button id="calculate-btn"  class="btn bg-green-700 text-white w-full">CALCULAR</button>
     </div>
 
     <div class="text-center">
@@ -130,6 +130,8 @@
     </div>
     
   </section>
+        </div>
+
 
   <script>
   document.addEventListener("DOMContentLoaded", () => {

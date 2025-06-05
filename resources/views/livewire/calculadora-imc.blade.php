@@ -1,5 +1,5 @@
-<div class="max-w-md mx-auto mt-10 p-6 bg-white shadow-xl rounded-xl">
-    <h2 class="text-2xl font-bold mb-6 text-center text-primary">Calculadora de IMC</h2>
+<div class="max-w-md mx-auto mt-10 p-6 bg-white shadow-xl rounded-xl flex flex-col align-middle text-center justify-center">
+    <h2 class="text-2xl font-bold mb-6 text-center text-green-700">Calculadora de IMC</h2>
 
     @if ($mensaje)
         <div class="alert bg-{{$color}} shadow-sm mb-4 ">
@@ -36,7 +36,7 @@
     @endif
     </div>
 
-    <button wire:click="guardar()" class="btn btn-primary w-full">
+    <button wire:click="guardar()" class="btn bg-green-700 text-white w-full">
         Calcular IMC
     </button>
 </div>

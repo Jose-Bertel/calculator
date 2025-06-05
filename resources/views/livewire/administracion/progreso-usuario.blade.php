@@ -9,7 +9,8 @@
             <button class="btn" wire:click="buscar()">Buscar</button>
         </div>
     @if ($user)
-            <h2 class="text-2xl font-bold mb-6 text-center text-primary">{{$user->name}} Progreso de IMC (Por Semana)</h2>
+            <h1 class="font-bold text-center text-green-800 text-4xl">{{$user->name}}</h1>
+            <h2 class="text-2xl font-bold mb-6 text-center text-green-700">Progreso de IMC</h2>
             <table class="table table-zebra w-full">
             <thead>
                 <tr>
@@ -69,7 +70,7 @@
 
 
             @if ($promedioIMC !== null)
-                <div class="max-w-4xl mx-auto mt-6 p-4 mb-6 bg-blue-100 rounded text-blue-800 font-semibold">
+                <div class="max-w-4xl mx-auto mt-6 p-4 mb-6 bg-blue-100 rounded text-green-800 font-semibold">
                     Promedio de IMC: <span class="text-lg">{{ number_format($promedioIMC, 2) }}</span>
                 </div>
 
