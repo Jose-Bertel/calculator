@@ -4,7 +4,7 @@
             <tr>
                 <th>Fecha</th>
                 <th>Modelo</th>
-                <th>Administrador</th>
+                <th>Usuario</th>
                 <th>Descripción</th>
                 <th>Detalles</th>
             </tr>

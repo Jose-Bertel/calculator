@@ -61,7 +61,7 @@
 <section class="flex justify-center gap-10 p-8 items-center">
     <div>
       <h1 class="text-8xl font-bold text-gray-800">Calcula tu <span class="text-green-700">IMC</span><br><span class="text-7xl text-gray-700">en segundos</span></h1>
-      <p class="mt-3 text-xl text-gray-600">Descubre si estás en tu peso ideal con una herramienta rápida y precisa</p>
+      <p class="mt-3 text-lg text-gray-600">Descubre si estás en tu peso ideal con una herramienta <br>rápida, precisa y fácil de usar. Con solo ingresar tu peso y altura, <br>obtendrás una evaluación inmediata de tu estado corporal <br>según los estándares internacionales de salud.</p>
     </div>
     <div class="flex justify-center">
       <img src="/storage/images/Imagen1.png" alt="IMC" class="">
@@ -99,7 +99,11 @@
         ¿Qué es el IMC?
       </div>
       <div class="collapse-content bg-white">
-        <p>El Índice de Masa Corporal (IMC) es una medida que se usa para clasificar el peso de una persona en relación con su altura. Se calcula dividiendo el peso (en kilogramos) entre la altura al cuadrado (en metros). El resultado se usa para categorizar a las personas como bajo peso, peso saludable, sobrepeso u obesidad.</p>
+        <p>El Índice de Masa Corporal (IMC) es un valor numérico que se utiliza para evaluar si una persona tiene un peso adecuado en relación con su estatura. Se calcula dividiendo el peso de una persona en kilogramos por el cuadrado de su altura en metros (kg/m²). Este índice es una herramienta sencilla y rápida que ayuda a clasificar el estado nutricional de una persona en categorías como bajo peso, peso normal, sobrepeso u obesidad.
+        <br><br>
+        El IMC es ampliamente utilizado por profesionales de la salud como una primera aproximación para identificar posibles problemas relacionados con el peso corporal. Sin embargo, no mide directamente la grasa corporal ni considera factores como la edad, el sexo, la masa muscular o la distribución de la grasa, por lo que debe complementarse con otras evaluaciones médicas para obtener un diagnóstico más preciso.
+
+</p>
       </div>
     </div>
 
@@ -109,7 +113,11 @@
         ¿Por qué es importante el IMC?
       </div>
       <div class="collapse-content bg-white">
-        <p>El IMC ayuda a identificar riesgos de salud relacionados con el peso corporal. Es una herramienta sencilla pero útil.</p>
+        <p>El Índice de Masa Corporal (IMC) es importante porque permite identificar de forma rápida si una persona tiene un peso saludable en relación con su estatura. Esta información es útil para prevenir y detectar a tiempo problemas de salud asociados con el peso, como la desnutrición, el sobrepeso y la obesidad.
+        <br><br>
+        Un IMC demasiado bajo puede indicar una falta de nutrientes, lo que debilita el sistema inmunológico y aumenta el riesgo de enfermedades. Por otro lado, un IMC alto puede estar relacionado con un mayor riesgo de padecer enfermedades crónicas como la diabetes tipo 2, hipertensión, enfermedades cardiovasculares y algunos tipos de cáncer.
+        <br><br>
+        Aunque no es una herramienta perfecta, el IMC es una guía sencilla y accesible que ayuda a promover hábitos de vida más saludables y a tomar decisiones informadas sobre la salud.</p>
       </div>
     </div>
 
@@ -119,11 +127,22 @@
         ¿Cuáles son los rangos del IMC?
       </div>
       <div class="collapse-content bg-white">
+        <p class="font-semibold">Rangos del IMC:</p>
         <ul class="list-disc ml-4">
           <li>Bajo peso: &lt; 18.5</li>
           <li>Peso saludable: 18.5 – 24.9</li>
           <li>Sobrepeso: 25 – 29.9</li>
           <li>Obesidad: ≥ 30</li>
+        </ul>
+        <p class="font-semibold">Interpretación y recomendaciones</p>
+        <ul class="list-disc ml-4">
+        <li><span class="font-semibold">Bajo peso:</span> Puede indicar desnutrición o algún problema de salud. Se recomienda consultar con un profesional para evaluar la alimentación y descartar enfermedades.</li>
+
+        <li><span class="font-semibold">Peso normal:</span> Es el rango considerado saludable. Se recomienda mantener una alimentación equilibrada y realizar actividad física con regularidad para conservar este estado.</li>
+
+        <li><span class="font-semibold">Sobrepeso:</span> Indica un exceso de peso que podría aumentar el riesgo de desarrollar enfermedades como diabetes o hipertensión. Se sugiere mejorar los hábitos alimenticios y aumentar la actividad física.</li>
+
+        <li><span class="font-semibold">Obesidad:</span> Representa un mayor riesgo para la salud. Es importante buscar orientación médica y nutricional para establecer un plan de alimentación, ejercicio y seguimiento adecuado.</li>
         </ul>
       </div>
     </div>
