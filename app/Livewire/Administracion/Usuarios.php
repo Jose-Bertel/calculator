@@ -16,6 +16,7 @@ class Usuarios extends Component
     public $name;
     public $email;
     public $password;
+    public $birthdate;
     public $role;
     public $userId;
     public $perPage = 10;

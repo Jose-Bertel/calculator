@@ -30,6 +30,7 @@ class UserFactory extends Factory
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
+            'birthdate' => fake()->dateTimeBetween('-60 years', '-10 years')->format('Y-m-d'), // ← Añadir esto
             'password' => static::$password ??= Hash::make('password'),
             'two_factor_secret' => null,
             'two_factor_recovery_codes' => null,
