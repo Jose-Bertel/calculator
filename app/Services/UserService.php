@@ -45,6 +45,7 @@ class UserService
             }
             $user->name = $data['name'];
             $user->email = $data['email'];
+            $user->birthdate = $data['birthdate'];
             if (!empty($data['password'])) {
                 $user->password = Hash::make($data['password']);
             }
@@ -53,6 +54,7 @@ class UserService
             $user = User::create([
                 'name' => $data['name'],
                 'email' => $data['email'],
+                'birthdate' => $data['birthdate'],
                 'password' => Hash::make($data['password']),
             ]);
         }
